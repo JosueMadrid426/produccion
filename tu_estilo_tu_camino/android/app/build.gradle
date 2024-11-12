@@ -1,0 +1,39 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.tu_estilo_tu_camino"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.example.tu_estilo_tu_camino"
+        minSdk = 21
+        targetSdk = 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'tuAlias'
+            keyPassword 'tuClaveDeLlave'
+            storeFile file('ruta/a/tu/llave.jks')
+            storePassword 'tuClaveDeAlmacenamiento'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
